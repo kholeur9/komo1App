@@ -1,0 +1,68 @@
+{% extends "django_project/base.html" %}
+{% load static %}
+
+{% block style %}
+ <link rel="stylesheet" href="{% static 'client.css' %}">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+{% block title %}Komo1 | Client{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="header">
+    {% include 'django_project/header.html' %}
+  </div>
+
+  <section class="section" style="padding: 10px;">
+  <div style="background-color: #2A3E54; padding: 10px; border-radius: 8px;">
+  <div style="margin: 0; padding: 10px;" class="box-info">
+    <div class="box-info-number">
+      <span class="title">Numéro -</span>
+      <span style="font-size: 16px; margin-top: 5px" class="sub-title">
+          {{ client.numero }}
+      </span>
+      </div>
+      <div class="box-info-credit">
+        <span class="title">- Crédit</span>
+        <span style="margin-top: 5px;">{{ total_credit.total_credit}}</span>
+      </div>
+  </div>
+  </div>
+  </section>
+
+  <main style="padding: 0 10px;">
+    <div style="width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <a href="{% url 'retrait' client_id=client.id %}" style="text-decoration: none;">
+      <div style="display: flex; flex-direction: column; background-color: #2A3E54; padding: 10px; border-radius: 8px; align-items: center;">
+        <span style="color: white; font-size: 14px;">Retrait de credit</span>
+        <span style="color: #0493D8; font-size: 50px; margin-top: 20px;" class="material-symbols-outlined">
+featured_seasonal_and_gifts
+</span>
+      </div>
+      </a>
+      <a href="{% url 'forfait' client_id=client.id %}" style="text-decoration: none;">
+      <div style="display: flex; flex-direction: column; background-color: #2A3E54; padding: 10px; border-radius: 8px; align-items: center;">
+        <span style="color: white; font-size: 14px;">Achat de forfait</span>
+        <span style="color: #70E000; font-size: 50px; margin-top: 20px;" class="material-symbols-outlined">
+4g_plus_mobiledata
+</span>
+      </div>
+      </a>
+      <a href="{% url 'historique' client_id=client.id %}" style="text-decoration: none;">
+        <div style="display: flex; flex-direction: column; background-color: #2A3E54; padding: 10px; border-radius: 8px; align-items: center;">
+          <span style="color: white; font-size: 14px;">Historique</span>
+          <span style="color: #D2B48C; font-size: 50px; margin-top: 20px;" class="material-symbols-outlined">
+      history
+      </span>
+        </div>
+        </a>
+      <div style="background-color: #2A3E54; padding: 10px; border-radius: 8px;">
+        <span>block 4</span>
+      </div>
+    </div>
+  </main>
+
+</div>
+{% endblock %}

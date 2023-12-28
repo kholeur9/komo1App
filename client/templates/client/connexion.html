@@ -1,0 +1,39 @@
+{% extends "django_project/base.html" %}
+{% load static %}
+
+{% block style %}
+ <link rel="stylesheet" href="{% static 'connexion.css' %}">
+{% endblock %}
+
+{% block title %}Komo1 | Client{% endblock %}
+
+{% block content %}
+<div class="container">
+
+ <div class="box-header">
+    <div style="flex-row: start; display: flex; float: left;" class="box-logo">
+      <img src="{% static 'images/komo1.jpeg' %}" alt="Komo1">
+    </div>
+    <h1 style="color: white;" class="title">
+      Forfaits & Crédits
+    </h1>
+ </div>
+ <h2 style="width: 100%; display: flex; text-align: start; float: left; flex-row: start; color: white; font-size: 33px; margin-bottom: 10px;">Bienvenue !</h2>
+ <p style="float: left; width: 100%; color: #f1f1f1; font-weight: normal; font-size: 12px;">Entrez votre numéro pour voir vos crédits</p>
+ <div class="block-form">
+  <form method="post">
+    {% csrf_token %}
+    <div class="group-input">
+      <label style="color: white; font-weight: normal;" for="numero">Votre numéro de téléphone</label>
+      {{ form }}
+    </div>
+    <button class="btn" type="submit" style="font-size: 14px;">Confirmer</button>
+  </form>
+ </div>
+
+</div>
+
+<div class="copy">
+  <p style="color: white;">© 2023 <strong>Komo1</strong> tous droits réservés | powered by Prima</p>
+</div>
+{% endblock %}

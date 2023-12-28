@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  {% block style %}{% endblock %}
+  {% block script %}{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+
+  <!-- Ajouter le service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('{% static 'sw.js' %}')
+          .then(registration => console.log('Service Worker enregistré avec succès:', registration))
+          .catch(error => console.log('Erreur d\'enregistrement du Service Worker:', error));
+    }
+  </script>
+</head>
+<body style="background-color: #223040;">
+  {% block content %}{% endblock %}
+</body>
+</html>

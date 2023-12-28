@@ -1,0 +1,86 @@
+{% extends 'django_project/base.html' %}
+{% load static %}
+
+{% block script %}
+ <script defer src="{% static 'script/megaoctet.js' %}"></script>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="{% static 'retrait.css' %}">
+{% endblock %}
+
+
+{% block content %}
+{% include 'client/head.html' with titre=titre %}
+<section style="">
+  
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px;">
+    
+  <div style="width: 100%; display: grid; gap: 10px; grid-template-columns: 1fr 1fr 1fr; padding: 10px; background-color: #2A3E54; border-radius: 8px;">
+    
+    <!-- first block -->
+    <div style="background-color: #0493D8; padding: 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 3px;">
+      <span style="font-size: 12px; color: white;">Numéro</span>
+      <span style="font-size: 14px; color: white; font-weight: 600;">{{ credit.client.numero }}</span>
+    </div>
+    
+    <div style="background-color: #0493D8; padding: 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 3px;">
+      <span style="font-size: 12px; color: white;">Crédit(s)</span>
+      <span style="font-size: 14px; color: white; font-weight: 600;">{{ credit.total_credit }}</span>
+    </div>
+    
+    <div style="background-color: #0493D8; padding: 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 3px;">
+      <span style="font-size: 12px; color: white;">Retrait minimum</span>
+      <span style="font-size: 14px; color: white; font-weight: 600;">50</span>
+    </div>
+    <!-- end first block -->
+    
+  </div>
+    
+    {% if credit.total_credit >= 50 %}
+  <div style="background-color: #007200; padding: 5px; border-radius: 8px; display: flex; align-items: center; gap: 5px;">
+    <span style="color: white;" class="material-symbols-outlined">
+      check
+    </span>
+    <p style="font-size: 12px; color: white;">
+      Echange de crédits disponible.
+    </p>
+  </div>
+  {% else %}
+  <div style="background-color: #D00000; padding: 5px; border-radius: 8px; display: flex; align-items: center; gap: 5px;">
+    <span style="color: white;" class="material-symbols-outlined">
+      error
+    </span>
+    <p style="font-size: 12px; color: white;">
+      Echange de crédits non disponible.
+    </p>
+  </div>
+  {% endif %}
+  </div>
+  
+ </div>
+  
+</section>
+<main style="padding: 10px;">
+  <div style="width: 350px; justify-content: center; margin: 0 auto;">
+    <form method="post">
+      {% csrf_token %}
+      <label for="" style="font-size: 14px; color: #8D97A3;">Crédit à retirer</label>
+      {% if messages %}
+      {% for message in messages %}
+        <p style="color: #D00000; font-size: 13px;">{{ message }}</p>
+      {% endfor %}
+      {% endif %}
+      {{ form }}
+      {% if form.quantite.errors %}
+      <span style="color: red; font-size: 13px; list-style: none;">
+        {{ form.quantite.errors }}
+      </span>
+      {% endif %}
+      <button type="submit" style="width: 50%; padding: 10px; border-radius: 8px; border: none; outline: none; font-size: 16px; font-weight: 500; margin-top: 5px; background-color: #0493D8;">Valider</button>
+    </form>
+    </form>
+  </div>
+</main>
+{% endblock %}

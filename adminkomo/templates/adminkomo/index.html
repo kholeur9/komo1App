@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">-->
+  
+  <link rel="stylesheet" href="{% static 'adminkomo/main.css' %}">
+  {% block style %}{% endblock %}
+  {% block script %}{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+
+  <!-- Ajouter le service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('{% static 'sw.js' %}')
+          .then(registration => console.log('Service Worker enregistré avec succès:', registration))
+          .catch(error => console.log('Erreur d\'enregistrement du Service Worker:', error));
+    }
+  </script>
+</head>
+  
+<body style="background-color: #223040; padding: 0; margin: 0; box-sizing: border-box; font-family: 'Inter', sans-serif;">
+  <header style="padding: 0; margin: 0;">
+    
+    <div style="background-color:#2A3E54; padding: 10px; display: flex; align-items: center;" class="header">
+      <img src="{% static '/images/komo1.jpeg' %}" alt="Logo" style="width: 45px; height: 45px; margin-right: 10px; float: left; border-radius: 50%;">
+      <h1 style="color: #fff; font-size: 20px;">{% block titre %}Administration{% endblock %}
+      </h1>
+    </div>
+    
+    <div style="padding: 0 10px; margin: 0;" class="nav">
+      <ul class="nav-list">
+        <li>
+          <a style="{% if request.path == '/adminkomo/' %}background-color: #0493D8 {% else %} background-color: #2A3E54; {% endif %}; color: #fff; padding: 10px; border: none;" href="{% url 'adminkomo' %}">
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a style="{% if request.path == '/adminkomo/reclamations/' %}background-color: #0493D8 {% else %} background-color: #2A3E54; {% endif %}; color: #fff; padding: 10px; border: none;" href="{% url 'demande' %}">
+            Demande
+          </a>
+        </li>
+        <li>
+          <a style="{% if request.path == '/adminkomo/data_excel/' %}background-color: #0493D8 {% else %} background-color: #2A3E54; {% endif %}; color: #fff; padding: 10px; border: none;" href="{% url 'excel' %}">
+            excel
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  
+{% block content %}
+<main>
+
+  <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px; padding: 5px 10px;">
+    <div class="main" style="background-color: #2A3E54; border-radius: 8px; padding: 10px;">
+      <div style="position: relative; display: flex; flex-direction: row; width: 100%; align-items: center;">
+        <h1 style="width: 40%; font-size: 16px; font-weight: normal; color: #fff;">Client & Forfait</h1>
+        <div style="border-top: 1px solid #fff; width: 70%; height: 0.0001px;"></div>
+      </div>
+      
+      <div style="display: flex; width: 100%; gap: 10px; margin-top: 10px;" class="first-content">
+        <div class="main-content" style="width: 50%; display: flex; flex-direction: column; background-color: #FB5607; padding: 10px; align-items: center; justify-content: center; color: #fff; border-radius: 10px; font-weight: normal;">
+          <span style="font-size: 14px;">Client sur la période</span>
+          <span style="font-size: 20px; font-weight: 500;">{{ clients }}</span>
+        </div>
+        <div class="main-content" style="width: 50%; display: flex; flex-direction: column; background-color: #3A86FF; padding: 10px; align-items: center; justify-content: center; color: #fff; border-radius: 10px; font-weight: normal;">
+          <span style="font-size: 14px;">Transaction forfait</span>
+          <span style="font-size: 20px; font-weight: 500;">{{ forfaits }}</span>
+        </div>
+      </div>
+    </div>
+      <!-- Fin Premier contenu -->
+
+      <!-- Deuxième contenu -->
+    <div class="main" style="background-color: #2A3E54; border-radius: 8px; padding: 10px;">
+      <div style="position: relative; display: flex; flex-direction: row; width: 100%; align-items: center;">
+        <h1 style="width: 40%; font-size: 16px; font-weight: normal; color: #fff;">Option crédit</h1>
+        <div style="border-top: 1px solid #fff; width: 70%; height: 0.0001px;"></div>
+      </div>
+      
+      <div style="display: flex; width: 100%; gap: 10px; margin-top: 10px;" class="first-content">
+        <div class="main-content" style="width: 50%; display: flex; flex-direction: column; background-color: #C52233; padding: 10px; align-items: center; justify-content: center; color: #fff; border-radius: 10px; font-weight: normal;">
+      <span style="font-size: 14px;">
+        Crédit en cours
+      </span>
+      <span style="font-size: 20px; font-weight: 500;">
+        {% if total_general %}
+          {{total_general.total_general }}
+        {% else %}
+          0
+        {% endif %}
+          </span>
+        </div>
+        <div class="main-content" style="width: 50%; display: flex; flex-direction: column; background-color: #226F54; padding: 10px; align-items: center; justify-content: center; color: #fff; border-radius: 10px; font-weight: normal;">
+          <span style="font-size: 14px;">Crédit accordé</span>
+          <span style="font-size: 20px; font-weight: 500;">
+            {% if total_general %}
+            {{total_general.total_accord_credit }}
+            {% else %}
+              0
+            {% endif %}
+          </span>
+          </span>
+        </div>
+      </div>
+    </div> 
+      
+  </div>
+</main>
+  {% endblock %}
+</body>
+</html>

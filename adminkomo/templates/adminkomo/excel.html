@@ -1,0 +1,64 @@
+{% extends "adminkomo/index.html" %}
+{% load static %}
+
+{% block script %}
+ <script defer src="{% static 'script/detector.js' %}"></script>
+ <script defer src="{% static 'script/loading.js' %}"></script>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="{% static 'adminkomo/excel.css' %}">
+{% endblock %}
+
+{% block title %}Komo1 | Data Excel{% endblock %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column; gap: 10px;" class="content">
+
+ <div style="background-color: #2A3E54; padding: 10px; border-radius: 8px;" class="box-form">
+  <form enctype="multipart/form-data" method="post" id="excel-form">
+    {% csrf_token %}
+    <div class="box-file">
+      <label for="{{ form.file.id_for_label }}" >
+        <span class="material-symbols-outlined">
+          add
+        </span>
+      </label>
+      <span style="color: white; font-weight: normal;" id="file-name">Aucun fichier selectionné.</span>
+    </div>
+    
+    {{ form.file }}
+    <div class="box-excel">
+      <span class="material-symbols-outlined">
+      upload_file
+      </span>
+      <button type="submit" class="btn" id="submit-btn">
+        Extraire les données
+        <div id="loading-spinner" style="display: none;">
+          <span class="loader"></span>
+        </div>
+      </button>
+    </div>
+  </form>
+ </div>
+  <div style="background-color: #2A3E54; border-radius: 8px; padding: 10px;">
+    <p style="font-weight: normal;" class="count-field">
+      <span style="background-color: #C52233;" class="count">
+       {{ count_field }}
+      </span> 
+   fichier(s) excel dans la base de données.
+    </p>
+    {% for all_item in all %}
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <p style="color: white;">
+        Date: {{all_item.date}}
+      </p>
+      <p style="color: white;">
+        fichier: {{all_item.file.name}}
+      </p>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

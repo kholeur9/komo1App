@@ -1,0 +1,37 @@
+{% extends 'django_project/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'client/head.html' with titre=titre %}
+<main>
+  <div style="padding: 10px;">
+    <h1 style="font-size: 16px; color: white;">historique : Retrait de Crédit(s)</h1>
+  </div>
+  <div style="padding: 10px;">
+    <table style="width: 100%;">
+      <thead style="background-color: #0493D8; padding: 10px; font-size: 13px; color: white; font-weight: normal;">
+        <tr>
+          <th style="padding: 4px;">Numéro</th>
+          <th style="padding: 4px;">Crédit</th>
+          <th style="padding: 4px;">Forfait</th>
+          <th style="padding: 4px;">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for retrait_credit in retrait  %}
+        <tr style="background-color: #2A3E54;">
+          <td style="font-weight: 400; padding: 6px; color: white; font-size: 13px; text-align: center;">{{ retrait_credit.total_credit.client.numero }}</td>
+          <td style="font-weight: 400; padding: 4px; color: white; font-size: 13px; text-align: center;">{{ retrait_credit.quantite }}</td>
+          {% if retrait_credit.status == 'Approuvé' %}
+          <td style="font-weight: 600; padding: 4px; color: green; font-size: 13px; text-align: center;">{{ retrait_credit.data_mo }}</td>
+          {% else %}
+          <td style="font-weight: 500; padding: 4px; color: red; font-size: 13px; text-align: center;">{{ retrait_credit.data_mo }}</td>
+          {% endif %}
+          <td style="font-weight: 400; padding: 4px; color: white; font-size: 13px; text-align: center;">{{ retrait_credit.date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

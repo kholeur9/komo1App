@@ -1,0 +1,21 @@
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'header.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+{% endblock %}
+
+<header style="background-color: #2A3E54;">
+  <div class="header-container">
+    <div class="logo-style">
+      {% include 'client/logo.html' %}
+    </div>
+    <div class="header-icon">
+      <a style="color: #8D97A3;" href="{% url 'deconnexion' %}">
+         <span class="material-symbols-outlined">
+         logout
+         </span>
+      </a>
+    </div>
+  </div>
+</header>
