@@ -3,3 +3,6 @@ venv
 
 # media
 media/
+
+# requirements
+requirements.txt
