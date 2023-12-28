@@ -6,3 +6,7 @@ media/
 
 # requirements
 requirements.txt
+
+# migrations
+/client/migrations/
+/adminkomo/migrations/
