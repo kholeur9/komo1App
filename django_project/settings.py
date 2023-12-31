@@ -27,9 +27,9 @@ if SECRET_KEY is None:
   exit(1)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app', 'now.sh', 'localhost', '127.0.0.1']
 X_FRAME_OPTIONS = '*'
 
 # Application definition

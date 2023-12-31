@@ -1,1 +1,6 @@
-/home/runner/.cache/pip/pool/3e/7e/0d/cae2e239f6c979dae2cb33255ce498c08a18077e30ea8c4293cd1632a1
+#!/usr/bin/env -S ./python
+
+from django.core import management
+
+if __name__ == "__main__":
+    management.execute_from_command_line()

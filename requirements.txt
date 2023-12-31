@@ -1,6 +1,7 @@
 annotated-types==0.6.0
-asgiref @ file:///home/runner/.cache/pypoetry/artifacts/44/47/8b/eeb8b3236803e39b50f24aec1dd7dc622a47aedd27d0c37ba347271f9b/asgiref-3.5.1-py3-none-any.whl
+asgiref==3.7.2
 backports.entry-points-selectable==1.1.1
+backports.zoneinfo==0.2.1
 CacheControl==0.12.10
 cachy==0.3.0
 certifi==2021.10.8
@@ -13,7 +14,7 @@ cryptography==35.0.0
 debugpy==1.2.1
 Deprecated==1.2.14
 distlib==0.3.3
-Django @ file:///home/runner/.cache/pypoetry/artifacts/0a/6e/a7/ad9b81885c41d7edd5f5fd91479a9c6be684b7ad660172f6b1f93c7d42/Django-3.2.13-py3-none-any.whl
+Django @ file:///home/runner/Komo1App/.cache/pypoetry/artifacts/88/ff/ef/3cff3b5089591a955801204159627a4a30dbca619748cb210d9e97bd7c/Django-3.0.14-py3-none-any.whl
 django-pwa==1.1.0
 docopt==0.6.2
 et-xmlfile==1.1.0
@@ -49,17 +50,17 @@ pylev==1.4.0
 pyparsing==3.0.5
 python-jsonrpc-server==0.3.2
 python-language-server==0.31.10
-pytz @ file:///home/runner/.cache/pypoetry/artifacts/2f/64/84/b6333ff5a89076f2f48899fb6dc7e562400c812c962713b90b44ac5160/pytz-2022.1-py2.py3-none-any.whl
+pytz @ file:///home/runner/Komo1App/.cache/pypoetry/artifacts/bc/c0/ac/b8ccb2ba4667611cea03fa02f7973d297b2edbd2f4f108787e20917ff3/pytz-2023.3.post1-py2.py3-none-any.whl
 requests==2.26.0
 requests-toolbelt==0.9.1
 rope==0.18.0
 SecretStorage==3.3.1
 shellingham==1.4.0
 six==1.16.0
-sqlparse @ file:///home/runner/.cache/pypoetry/artifacts/5c/57/47/582e6c575570333d1c84c495489bc30ed2c7e0fccaabeaa29650cfc543/sqlparse-0.4.2-py3-none-any.whl
+sqlparse @ file:///home/runner/Komo1App/.cache/pypoetry/artifacts/62/fd/8f/8e3f2b7eace00d68d78781285af8b94e6fbf05daee76e1c82f64b744e1/sqlparse-0.4.4-py3-none-any.whl
 toml==0.10.2
 tomlkit==0.7.2
-typing-extensions==4.8.0
+typing-extensions @ file:///home/runner/Komo1App/.cache/pypoetry/artifacts/6b/03/1c/cfa538211fe7956e123c57e854ffb518602a6b6c92ea8fbe81bcc664dd/typing_extensions-4.9.0-py3-none-any.whl
 ujson==1.35
 urllib3==1.26.7
 virtualenv==20.10.0
