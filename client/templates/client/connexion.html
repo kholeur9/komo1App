@@ -25,6 +25,11 @@
     {% csrf_token %}
     <div class="group-input">
       <label style="color: white; font-weight: normal;" for="numero">Votre numéro de téléphone</label>
+      {% if messages %}
+      {% for message in messages %}
+        <p style="color: #D00000; font-size: 13px;">{{ message }}</p>
+      {% endfor %}
+      {% endif %}
       {{ form }}
     </div>
     <button class="btn" type="submit" style="font-size: 14px;">Confirmer</button>

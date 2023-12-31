@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'adminkomo',
 ]
 
-LOGIN_URL = '/client/connexion/'
+SESSION_COOKIE_AGE = 900
 
 # AUTH_USER_MODEL = 'client.Client'
 

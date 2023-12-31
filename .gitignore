@@ -10,3 +10,9 @@ requirements.txt
 # migrations
 /client/migrations/
 /adminkomo/migrations/
+
+# Replit
+.replit
+
+# database
+db.sqlite3

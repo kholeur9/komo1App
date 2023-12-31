@@ -74,6 +74,9 @@ class TotalGeneral(models.Model):
 
 
 class RetraitCredit(models.Model):
+  
+  CHOIX_LISTE = [(i, f"{i} crédits") for i in range(50, 201, 25)]
+  
   en_attente = 'En attente'
   approuvé = 'Approuvé'
   rejete = 'Rejeté'
@@ -85,11 +88,10 @@ class RetraitCredit(models.Model):
   )
   
   total_credit = models.ForeignKey(TotalCredit, on_delete=models.SET_NULL, null=True)
-  quantite = models.IntegerField(default=0)
+  quantite = models.IntegerField(choices=CHOIX_LISTE, default=50)
   data_forfait = models.IntegerField(default=0)
-  data_mo = models.CharField(max_length=1000, default='0 Mo', blank=True, null=True)
   status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=en_attente, blank=True, null=True)
   date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
-    return f"{self.total_credit.client} - Quantité retiré: {self.quantite} - Forfait obtenu: {self.data_forfait} Mo - Date: {self.date}"
+    return f"{self.total_credit.client} - Quantité retiré: {self.quantite} - Date: {self.date}"

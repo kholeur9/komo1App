@@ -5,12 +5,12 @@
 {% endblock %}
 
 <header>
-  <div style="display: flex; align-items: center; flex-direction: row; width: 100%; background-color: #2A3E54; padding: 0 10px;">
-    <a href="{% url 'client' client_id=client.id %}" style="text-decoration: none; color: white; font-size: 30px;">
-    <p style="color: #8D97A3; font-size: 35px;" class="material-symbols-outlined">
-keyboard_arrow_left
-    </p>
+  <div style="display: flex; align-items: center; flex-direction: row; width: 100%; background-color: #2A3E54; padding: 10px 0;">
+    <a href="{% url 'client' client_id=client.id %}" style="display: flex; align-items: center; text-decoration: none; color: #8D97A3;">
+      <span style="font-size: 30px" class="material-symbols-outlined">
+        keyboard_arrow_left
+      </span>
     </a>
-    <h1 style="color: #8D97A3; font-size: 18px; font-weight: 500; text-align: center;">{{ titre }}</h1>
+    <h1 style="color: #8D97A3; font-size: 20px; font-weight: 500; text-align: center;">{{ titre }}</h1>
   </div>
 </header>

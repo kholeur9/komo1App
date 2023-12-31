@@ -13,10 +13,17 @@
   color: white;
 }
 
-#data_forfait {
-  color: #8D97A3;
-  display: none;
+#quantite {
+  display: block;
+  padding: 10px;
+  height: 50px;
 }
-#data_mo {
-  color: #8D97A3;
+#data_forfait {
+  display: none;
+  padding: 10px;
+  height: 50px;
+}
+#data_forfait option {
+  width: 100%;
+  color: red;
 }
