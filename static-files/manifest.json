@@ -1,0 +1,16 @@
+{
+  "name": "Komo1",
+  "short_name": "Komo1",
+  "description": "Application web de Komo1 de gestion des forfaits internet",
+  "start_url": "/client/connexion",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2A3E54",
+  "icons": [
+    {
+      "src": "/static/images/komo1.jpeg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

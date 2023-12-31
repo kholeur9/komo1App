@@ -29,7 +29,7 @@ if SECRET_KEY is None:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', 'now.sh', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 SESSION_COOKIE_AGE = 900
+SESSION_COOKIE_SECURE = True
 
 # AUTH_USER_MODEL = 'client.Client'
 
@@ -133,7 +134,7 @@ MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-#STATIC_ROOT = BASE_DIR / "static-files"
+STATIC_ROOT = BASE_DIR / "static-files"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
