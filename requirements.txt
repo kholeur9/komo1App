@@ -14,7 +14,7 @@ cryptography==35.0.0
 debugpy==1.2.1
 Deprecated==1.2.14
 distlib==0.3.3
-Django @ file:///home/runner/Komo1App/.cache/pypoetry/artifacts/88/ff/ef/3cff3b5089591a955801204159627a4a30dbca619748cb210d9e97bd7c/Django-3.0.14-py3-none-any.whl
+Django==3.0.14
 django-pwa==1.1.0
 docopt==0.6.2
 et-xmlfile==1.1.0
