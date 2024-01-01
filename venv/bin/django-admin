@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ./python3
+#!/home/runner/Komo1App/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
