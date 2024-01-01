@@ -6,7 +6,6 @@ from .utils.excel import send_data
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-#@login_required(login_url='/admin/login/')
 def index(request):
   
   client_count = Client.objects.count()
@@ -20,7 +19,6 @@ def index(request):
   }
   return render(request, 'adminkomo/index.html', context=context)
 
-#@login_required
 def data_excel(request):
  if request.method == 'POST':
   form = ExcelForm(request.POST, request.FILES)
@@ -43,6 +41,5 @@ def data_excel(request):
   
  return render(request, 'adminkomo/excel.html', context=context)
 
-#@login_required
 def demande(request):
   return render(request, 'adminkomo/demande.html')

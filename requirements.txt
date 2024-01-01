@@ -24,4 +24,5 @@ typing_extensions==4.9.0
 urllib3==2.1.0
 vonage==3.13.0
 vonage-jwt==1.1.0
+whitenoise==6.6.0
 wrapt==1.16.0
