@@ -27,10 +27,15 @@ if SECRET_KEY is None:
   exit(1)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
+
+if DEBUG:
+    print(f"DEBUG is {DEBUG}")
+else:
+    print(f"DEBUG is {DEBUG}")
 
 # Application definition
 
