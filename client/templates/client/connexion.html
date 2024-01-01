@@ -2,43 +2,42 @@
 {% load static %}
 
 {% block style %}
- <link rel="stylesheet" href="{% static 'connexion.css' %}">
+ <link rel="stylesheet" href="{% static 'connexions.css' %}">
 {% endblock %}
 
 {% block title %}Komo1 | Client{% endblock %}
 
 {% block content %}
-<div class="container">
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
 
- <div class="box-header">
-    <div style="flex-row: start; display: flex; float: left;" class="box-logo">
-      <img src="{% static 'images/komo1.jpeg' %}" alt="Komo1">
+ <div style="display: flex; flex-direction: row; align-items: end; margin-top: 20px;">
+    <div style="flex-row: start; display: flex; float: left; width: 110px; height: 110px;">
+      <img style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" src="{% static 'images/komo1.jpeg' %}" alt="Komo1">
     </div>
-    <h1 style="color: white;" class="title">
+    <h1 style="color: white; font-size: 20px; font-weight: normal; margin-top: 8px; flex: end;">
       Forfaits & Crédits
     </h1>
  </div>
  <h2 style="width: 100%; display: flex; text-align: start; float: left; flex-row: start; color: white; font-size: 33px; margin-bottom: 10px;">Bienvenue !</h2>
- <p style="float: left; width: 100%; color: #f1f1f1; font-weight: normal; font-size: 12px;">Entrez votre numéro pour voir vos crédits</p>
- <div class="block-form">
-  <form method="post">
+ <div style="margin: 50px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 100%; padding: 10px 0">
+  <form style="width: 100%;" method="post">
     {% csrf_token %}
-    <div class="group-input">
-      <label style="color: white; font-weight: normal;" for="numero">Votre numéro de téléphone</label>
+    <div style="display: flex; flex-direction: column; margin-bottom: 18px; width: 100%;">
+      <label style="color: white; font-weight: normal; font-size: 12px; font-weight: 600; margin-bottom: 5px;" for="numero">Votre numéro de téléphone</label>
       {% if messages %}
       {% for message in messages %}
-        <p style="color: #D00000; font-size: 13px;">{{ message }}</p>
+      <p style="color: #D00000; font-size: 13px;">{{ message }}</p>
       {% endfor %}
       {% endif %}
       {{ form }}
     </div>
-    <button class="btn" type="submit" style="font-size: 14px;">Confirmer</button>
+    <button style="width: 100%; height: 50px; font-size: 14px; font-weight: 700; background-color: #036394; color: white; border: none; outline: none; border-radius: 8px;" type="submit" >Confirmer</button>
   </form>
  </div>
 
 </div>
 
-<div class="copy">
-  <p style="color: white;">© 2023 <strong>Komo1</strong> tous droits réservés | powered by Prima</p>
+<div style="position: absolute; bottom: 10px; right: 10px;">
+  <p style="color: white; font-size: 10px;">© 2023 <strong>Komo1</strong> tous droits réservés | powered by Prima</p>
 </div>
 {% endblock %}

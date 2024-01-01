@@ -6,8 +6,9 @@ class ClientForm(forms.ModelForm):
   model = Client
   fields = ['numero']
   widgets = {
-   'numero': forms.TextInput(attrs={'class': 'input', 'id': 'numero'}),
+   'numero': forms.TextInput(attrs={'id': 'numero', 'style' : 'height: 50px; border: 1px solid #ccc; border-radius: 8px;  font-size: 16px; padding: 0 8px; outline: none;'}),
   }
+
 
  def __init__(self, *args, **kwargs):
    super(ClientForm, self).__init__(*args, **kwargs)
