@@ -7,7 +7,7 @@ charset-normalizer==3.3.2
 cryptography==41.0.7
 Deprecated==1.2.14
 dj-database-url==2.1.0
-Django==3.0.14
+Django>=3.0,<4.0
 django-environ==0.11.2
 django-pwa==1.1.0
 et-xmlfile==1.1.0
