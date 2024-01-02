@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import ExcelForm
-from .models import Excel
+from .models import ExcelFile
 from client.models import Client, Forfait, TotalGeneral
 from .utils.excel import send_data
 from django.contrib.auth.decorators import login_required
@@ -30,8 +30,8 @@ def data_excel(request):
  else:
   form = ExcelForm()
 
- count = Excel.objects.filter(file__endswith = '.xlsx').count()
- all_file = Excel.objects.all()
+ count = ExcelFile.objects.filter(file__endswith = '.xlsx').count()
+ all_file = ExcelFile.objects.all()
  
  context = {
     'form': form,

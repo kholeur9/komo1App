@@ -1,10 +1,10 @@
 from django import forms
-from .models import Excel
+from .models import ExcelFile
 
 
 class ExcelForm(forms.ModelForm):
  class Meta:
-  model = Excel
+  model = ExcelFile
   fields = ('file',)
   widgets = {
     'file': forms.FileInput(attrs={'type': 'file', 'class': 'input-file', 'id': 'excel'}),

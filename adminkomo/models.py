@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Excel(models.Model):
+class ExcelFile(models.Model):
     file = models.FileField(upload_to='data_excel/')
     date = models.DateField(auto_now_add=True)
  
