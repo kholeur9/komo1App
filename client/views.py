@@ -4,7 +4,6 @@ from django.db import transaction
 from django.contrib import messages
 from django.contrib.auth import logout
 from datetime import datetime
-from django.views.decorators.cache import never_cache
 
 from .forms import ClientForm, RetraitCreditForm
 from .models import Client, TotalCredit, RetraitCredit
@@ -30,7 +29,6 @@ def connexion(request):
 
   return render(request, 'client/connexion.html', {'form': ClientForm()})
 
-@never_cache
 def client(request, client_id):
     client_id = get_object_or_404(Client, id=client_id)
     total_credit = TotalCredit.objects.filter(client=client_id).first()

@@ -6,4 +6,4 @@ class Excel(models.Model):
     date = models.DateField(auto_now_add=True)
  
     def __str__(self):
-        return f"{self.file} - Date: {self.date}"
+        return f"{self.file}"
