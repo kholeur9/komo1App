@@ -4,7 +4,7 @@ from django.db import transaction
 from django.contrib import messages
 from django.contrib.auth import logout
 from datetime import datetime
-
+from django.contrib import messages
 from .forms import ClientForm, RetraitCreditForm
 from .models import Client, TotalCredit, RetraitCredit
 from .utils import demande_credit

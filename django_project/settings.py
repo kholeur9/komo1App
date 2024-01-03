@@ -41,6 +41,7 @@ SESSION_COOKIE_AGE = 900
 SESSION_COOKIE_SECURE = True
 
 # AUTH_USER_MODEL = 'client.Client'
+AUTH_USER_MODEL = 'adminkomo.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

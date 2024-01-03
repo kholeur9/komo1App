@@ -66,17 +66,17 @@ form {
  font-weight: 600;
  margin-bottom: 5px;
 }
-
-.input {
+.form-control {
  height: 50px;
  width: 100%;
- border: 1px solid #ccc;
+ background-color: #2A3E54;
+ border: none;
  border-radius: 8px;
  font-size: 16px;
  padding: 0 8px;
  outline: none;
+ color: #fff;
 }
-.input:focus {
+.form-control:focus {
  border: 2px solid skyblue;
- 
 }
