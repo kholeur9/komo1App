@@ -52,15 +52,16 @@ def retrait(request, client_id):
         get_quantite = form.cleaned_data.get('quantite')
         get_data = form.cleaned_data.get('data_forfait')
         get_last_date = retraits.first().date.date() if retraits.exists() else None
-        if (get_quantite >= 50 and get_quantite <= credit.total_credit and (get_last_date is None or get_last_date != datetime.now().date())):
+        if (get_quantite >= 50 and get_quantite <= credit.total_credit 
+            and (get_last_date is None or get_last_date != datetime.now().date())):
           try:
             with transaction.atomic():
               credit.total_credit -= get_quantite
               credit.save()
-              retrait_credit = RetraitCredit(total_credit=credit, quantite=get_quantite,data_forfait=get_data)
-              sms_message = f"Le client {client.numero} a effectué une conversion de {get_quantite} crédits pour un forfait de {get_data} Mo. De komo1App.";
-              demande_credit(sms_message)
+              retrait_credit = RetraitCredit(total_credit=credit,quantite=get_quantite,data_forfait=get_data)
               retrait_credit.save()
+            sms_message = f"Le client {client.numero} a effectué une conversion de {get_quantite} crédits pour un forfait de {get_data} Mo. De komo1App.";
+            demande_credit(sms_message)
             return redirect('client', client_id=client_id)
           except Exception as e:
             print(f"Erreur: {e}")
@@ -72,8 +73,14 @@ def retrait(request, client_id):
           messages.error(request, f"Vous n'avez pas {get_quantite} crédits.")
     else:
         form = RetraitCreditForm()
+    context = {
+        'client': client,
+        'credit': credit,
+        'form': form,
+        'titre': 'Retrait de crédit',
+    }
     return render(
-        request, 'client/retraitcredit.html', {'form': form, 'client': client, 'credit': credit, 'titre': 'Retrait de crédits'})
+        request, 'client/retraitcredit.html', context)
 
 
 def forfait(request, client_id):

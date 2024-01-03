@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="format-detection" content="telephone=no" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'django_project/css/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'django_project/css/base.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   {% block script %}{% endblock %}
   
   <title>{% block title %}{% endblock %}</title>
-  <link rel="manifest" href="{% static 'manifest.json' %}">
+  <link rel="manifest" href="{% static 'django_project/manifest.json' %}">
 
   <!-- Ajouter le service worker -->
   <script>
@@ -27,6 +27,18 @@
   </script>
 </head>
 <body style="background-color: #223040; font-family: 'Inter', sans-serif;">
+  <div style="display: flex; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #2A3E54; justify-content: center; align-items: center; z-index: 99" id="splash-screen">
+    <img src="{% static 'client/img/komo1.jpeg' %}" alt="Logo" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+  </div>
   {% block content %}{% endblock %}
+
+  <script>
+      window.onload = function() {
+          var splashScreen = document.getElementById('splash-screen');
+          setTimeout(function() {
+          splashScreen.style.display = 'none';
+          }, 2000);
+      };
+  </script>
 </body>
 </html>
