@@ -7,7 +7,7 @@ from .views import home
 
 urlpatterns = [
     path('', home, name='home'),
-    path('admin/', admin.site.urls),
+    path('gestion-forfait/', admin.site.urls),
     path('client/', include('client.urls')),
     path('adminkomo/', include('adminkomo.urls')),
 ]
