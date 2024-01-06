@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.php
     pkgs.postgresql96
     pkgs.postgresql_11
     pkgs.python38Full

@@ -23,7 +23,7 @@
           <td style="font-weight: 400; padding: 6px; color: white; font-size: 13px; text-align: center;">{{ retrait_credit.total_credit.client.numero }}</td>
           <td style="font-weight: 400; padding: 4px; color: white; font-size: 13px; text-align: center;">{{ retrait_credit.quantite }}</td>
           {% if retrait_credit.status == 'Approuvé' %}
-          <td style="font-weight: 600; padding: 4px; color: green; font-size: 13px; text-align: center;">{{ retrait_credit.data_mo }}</td>
+          <td style="font-weight: 600; padding: 4px; color: green; font-size: 13px; text-align: center;">{{ retrait_credit.data_forfait }}</td>
           {% else %}
           <td style="font-weight: 500; padding: 4px; color: red; font-size: 13px; text-align: center;">{{ retrait_credit.data_forfait }} Mo</td>
           {% endif %}

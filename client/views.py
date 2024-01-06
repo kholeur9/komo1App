@@ -7,7 +7,8 @@ from datetime import datetime
 from django.contrib import messages
 from .forms import ClientForm, RetraitCreditForm
 from .models import Client, TotalCredit, RetraitCredit
-from .utils import demande_credit
+#from .utils import demande_credit
+from .message import demande_credit
 
 # Create your views here.
 def connexion(request):
@@ -32,10 +33,12 @@ def connexion(request):
 def client(request, client_id):
     client_id = get_object_or_404(Client, id=client_id)
     total_credit = TotalCredit.objects.filter(client=client_id).first()
-    return render(request, 'client/client.html', {
-        'client': client_id,
-        'total_credit': total_credit
-    })
+    context = {
+      'client': client_id, 
+      'total_credit': total_credit,
+      'titre' : 'Accueil',
+    }
+    return render(request, 'client/client.html', context=context)
 
 def deconnexion(request):
   logout(request)
@@ -61,6 +64,7 @@ def retrait(request, client_id):
               retrait_credit = RetraitCredit(total_credit=credit,quantite=get_quantite,data_forfait=get_data)
               retrait_credit.save()
             sms_message = f"Le client {client.numero} a effectué une conversion de {get_quantite} crédits pour un forfait de {get_data} Mo. De komo1App.";
+            #demande_credit(sms_message)
             demande_credit(sms_message)
             return redirect('client', client_id=client_id)
           except Exception as e:

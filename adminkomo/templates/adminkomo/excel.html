@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block script %}
- <script defer src="{% static 'adminkomo/js/detector.js' %}"></script>
- <script defer src="{% static 'adminkomo/js/loading.js' %}"></script>
+ <script src="{% static 'adminkomo/js/loading.js' %}"></script>
 {% endblock %}
 
 {% block style %}
@@ -61,4 +60,24 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('excel-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        form.addEventListener('submit', function (e) {
+          
+          loadingSpinner.style.display = 'inline-block';
+          submitBtn.disabled = true;
+        });
+
+        form.addEventListener('change', function (e) {
+          const fileName = form.file.files.length > 0 ? form.file.files[0].name : 'Aucun fichier sélectionné.';
+          fileNameDisplay.innerText = fileName;
+        });
+    })
+</script>
 {% endblock %}
