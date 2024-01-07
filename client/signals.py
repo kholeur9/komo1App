@@ -8,7 +8,7 @@ def calcul_credit(sender, instance, created, **kwargs):
  if created:
   client = instance.client
   forfait = instance.forfait
-  calcul = forfait * 0.05
+  calcul = forfait * 0.07
    
   Credit.objects.create(client=client, forfait=instance, credit=calcul)
 

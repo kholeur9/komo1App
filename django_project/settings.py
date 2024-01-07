@@ -22,6 +22,10 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
 
+# Application encodage
+FILE_CHARSET = 'utf-8'
+DEFAULT_CHARSET = 'utf-8'
+
 
 # Application definition
 
