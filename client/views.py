@@ -63,9 +63,10 @@ def retrait(request, client_id):
               credit.save()
               retrait_credit = RetraitCredit(total_credit=credit,quantite=get_quantite,data_forfait=get_data)
               retrait_credit.save()
-            sms_message = f"Le client {client.numero} a effectué une conversion de {get_quantite} crédits pour un forfait de {get_data} Mo. De komo1App.";
-            #demande_credit(sms_message)
-            demande_credit(sms_message)
+              
+              sms_message = f"Le client {client.numero} a effectué une conversion de {get_quantite} crédits pour un forfait de {get_data} Mo. De komo1App.";
+              demande_credit(sms_message)
+              retrait_credit.status = 'Approuvé'
             return redirect('client', client_id=client_id)
           except Exception as e:
             print(f"Erreur: {e}")

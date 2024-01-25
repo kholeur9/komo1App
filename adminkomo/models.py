@@ -6,7 +6,7 @@ class User(AbstractUser):
     pass
 
 class ExcelFile(models.Model):
-    file = models.FileField(upload_to='data_excel/')
+    file = models.FileField(upload_to='data_excel/', unique=True)
     date = models.DateField(auto_now_add=True)
  
     def __str__(self):

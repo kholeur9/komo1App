@@ -1,5 +1,7 @@
 { pkgs }: {
   deps = [
+    pkgs.mkinitcpio-nfs-utils
+    pkgs.cope
     pkgs.php
     pkgs.postgresql96
     pkgs.postgresql_11

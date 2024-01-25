@@ -16,8 +16,13 @@
 <div style="display: flex; flex-direction: column; gap: 10px;" class="content">
 
  <div style="background-color: #2A3E54; padding: 10px; border-radius: 8px;" class="box-form">
-  <form enctype="multipart/form-data" method="post" id="excel-form">
+  <form enctype="multipart/form-data" method="post" id="excel-form" id="form">
     {% csrf_token %}
+    {% if error %}
+    {{ error }}
+    {% elif success %}
+    {{ success }}
+    {% endif %}
     <div class="box-file">
       <label for="{{ form.file.id_for_label }}" >
         <span class="material-symbols-outlined">
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const fileNameDisplay = document.getElementById('file-name');
 
         form.addEventListener('submit', function (e) {
-          
+
           loadingSpinner.style.display = 'inline-block';
           submitBtn.disabled = true;
         });

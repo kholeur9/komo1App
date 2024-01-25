@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'debug-toolbar',
     'pwa',
     'client',
     'adminkomo',
@@ -48,7 +49,9 @@ SESSION_COOKIE_SECURE = True
 AUTH_USER_MODEL = 'adminkomo.User'
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    
+'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     
 'django.contrib.sessions.middleware.SessionMiddleware',
