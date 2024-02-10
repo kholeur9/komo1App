@@ -42,6 +42,14 @@ INSTALLED_APPS = [
     'adminkomo',
 ]
 
+if DEBUG:
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    INTERNAL_IPS = [
+        # ...
+        '127.0.0.1',
+        # ...
+    ]
+
 SESSION_COOKIE_AGE = 900
 SESSION_COOKIE_SECURE = True
 

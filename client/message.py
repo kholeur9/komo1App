@@ -9,7 +9,7 @@ def demande_credit(message):
         'action': 'send-sms',
         'api_key': api_key,
         'to': '24174871292',
-        'from': 'TECHSOFT',
+        'from': 'Komo1App',
         'sms': message,
     }
 
